@@ -1,0 +1,27 @@
+name: Build JSAR native deps
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-on-macOS:
+    runs-on: macos-latest
+    steps:
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: 1.74.0
+    - name: Install Rust targets
+      run: |
+        rustup target add aarch64-apple-darwin
+        rustup target add x86_64-apple-darwin
+    - uses: actions/setup-node@v4.0.0
+      with:
+        node-version: 18.16.0
+    - name: Build ICU library
+      run: |
+        git clone https://github.com/unicode-org/icu
+        cd icu && git checkout release-72-1
+        sh build-icu.sh
+
