@@ -17,7 +17,7 @@ jobs:
         git checkout release-72-1
         cd ./icu4c/source
         ./configure --help
-        ./configure --prefix=./dist --enable-release=yes --enable-shared=yes --enable-tests=no --enable-samples=no
+        ./configure --prefix=`pwd`/dist --enable-release=yes --enable-shared=yes --enable-tests=no --enable-samples=no
         make install
         ls -lsh ./dist
 
