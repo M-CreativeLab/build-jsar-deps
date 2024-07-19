@@ -19,5 +19,5 @@ jobs:
         ./configure --help
         ./configure --prefix=./dist --enable-release=yes --enable-shared=yes --enable-tests=no --enable-samples=no
         make install
-        ls ./dist
+        ls -lsh ./dist
 
