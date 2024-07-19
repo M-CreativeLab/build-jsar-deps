@@ -13,6 +13,9 @@ jobs:
     - name: Build ICU library
       run: |
         git clone https://github.com/unicode-org/icu
-        cd icu && git checkout release-72-1
-        sh build-icu.sh
+        cd icu
+        git checkout release-72-1
+        cd ./icu4c/source
+        ./configure --help
+        ./configure && make
 
